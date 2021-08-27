@@ -22,7 +22,7 @@
 #include "driver/uart.h"
 #include "exception.hpp"
 
-namespace ansic1218 {
+namespace utils {
 
 class SerialException : public Exception {
 public:
@@ -57,10 +57,13 @@ public:
     virtual size_t read(std::vector<uint8_t> &buffer, size_t nBytesToRead, std::chrono::nanoseconds timeout,
                         FlushInputBuffer flushInputBuffer);
 
+    virtual size_t read(std::vector<uint8_t> &buffer, std::vector<uint8_t> &&pattern, size_t nBytesToRead,
+                        std::chrono::nanoseconds timeout);
+
     virtual size_t read(std::vector<uint8_t> &buffer, std::vector<uint8_t> &pattern, size_t nBytesToRead,
                         std::chrono::nanoseconds timeout);
 
     virtual size_t read(std::vector<uint8_t> &buffer, std::vector<uint8_t> &pattern, size_t nBytesToRead,
                         std::chrono::nanoseconds timeout, FlushInputBuffer flushInputBuffer);
 };
-}    // namespace ansic1218
+}    // namespace utils

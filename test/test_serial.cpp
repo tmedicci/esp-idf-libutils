@@ -14,12 +14,12 @@
 
 
 #include <chrono>
-#include "ansic1218/serial.hpp"
+#include "utils/serial.hpp"
 #include "unity.h"
 
 using namespace std;
 using namespace chrono;
-using namespace ansic1218;
+using namespace utils;
 
 TEST_CASE("Should send and receive data without flushing input buffer", "[ansic1218][serial]")
 {
@@ -31,7 +31,7 @@ TEST_CASE("Should send and receive data without flushing input buffer", "[ansic1
 
     string s{"Hello, world!"};
 
-    serial.write({s.begin(), s.end()});
+    serial.write(s);
 
     vector<uint8_t> resp_first;
     serial.read(resp_first, 5, seconds(1));
@@ -54,7 +54,7 @@ TEST_CASE("Should send and receive data with flushed input buffer", "[ansic1218]
 
     string s{"Hello, world!"};
 
-    serial.write({s.begin(), s.end()});
+    serial.write(s);
 
     vector<uint8_t> resp_first;
     serial.read(resp_first, 5, seconds(1), Serial::FlushInputBuffer::Enable);
@@ -77,7 +77,7 @@ TEST_CASE("Should send and receive less data than expected (by timeout)", "[ansi
 
     string s{"Hell"};
 
-    serial.write({s.begin(), s.end()});
+    serial.write(s);
 
     vector<uint8_t> resp;
     serial.read(resp, 5, seconds(5));
@@ -95,7 +95,7 @@ TEST_CASE("Should send and receive data until pattern is found", "[ansic1218][se
 
     string s{"Lets say \"Hello World\", my dear!"};
 
-    serial.write({s.begin(), s.end()});
+    serial.write(s);
 
     string r{"Existing Hello World!"};
     vector<uint8_t> resp(r.begin(), r.end());

@@ -18,11 +18,11 @@
 #include <csignal>
 #include <cstring>
 #include "esp_err.h"
-#include "serial.hpp"
+#include "utils/serial.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace ansic1218;
+using namespace utils;
 
 static const int RX_BUF_SIZE = 1024;
 
@@ -98,6 +98,11 @@ size_t Serial::read(vector<uint8_t> &buffer, size_t nBytesToRead, nanoseconds ti
 {
     std::vector<uint8_t> empty;
     return read(buffer, empty, nBytesToRead, timeout, flushInputBuffer);
+}
+
+size_t Serial::read(vector<uint8_t> &buffer, vector<uint8_t> &&pattern, size_t nBytesToRead, nanoseconds timeout)
+{
+    return read(buffer, pattern, nBytesToRead, timeout, FlushInputBuffer::Disable);
 }
 
 size_t Serial::read(vector<uint8_t> &buffer, vector<uint8_t> &pattern, size_t nBytesToRead, nanoseconds timeout)

@@ -18,7 +18,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace ansic1218 {
+namespace utils {
 
 class Exception : public std::runtime_error {
     template <typename Arg> void push(std::ostringstream &out, Arg &&arg) { out << arg; }
@@ -61,4 +61,4 @@ public:
     {
     }
 };
-}    // namespace ansic1218
+}    // namespace utils

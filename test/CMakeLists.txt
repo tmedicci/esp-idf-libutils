@@ -1,3 +1,3 @@
-idf_component_register(SRC_DIRS "." "mocks" "utils"
-                    INCLUDE_DIRS "." "mocks" "utils"
-                    REQUIRES cmock ansic1218)
+idf_component_register(SRC_DIRS "." "utils"
+                    INCLUDE_DIRS "." "utils"
+                    REQUIRES cmock libutils)

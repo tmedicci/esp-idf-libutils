@@ -13,12 +13,11 @@
 // limitations under the License.
 
 
-#include "test-utils.hpp"
-
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include "utils/test-utils.hpp"
 
 std::string utils::bufToStr(vector<uint8_t>::const_iterator first, vector<uint8_t>::const_iterator last)
 {

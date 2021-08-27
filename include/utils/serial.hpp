@@ -17,6 +17,7 @@
 #pragma once
 
 #include <chrono>
+#include <string>
 #include <vector>
 #include "driver/gpio.h"
 #include "driver/uart.h"
@@ -51,6 +52,8 @@ public:
     void set_loop_back();
 
     virtual void write(const std::vector<uint8_t> &buffer);
+
+    virtual void write(std::string msg);
 
     virtual size_t read(std::vector<uint8_t> &buffer, size_t nBytesToRead, std::chrono::nanoseconds timeout);
 

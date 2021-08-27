@@ -88,6 +88,11 @@ void Serial::write(const vector<uint8_t> &buffer)
     }
 }
 
+void Serial::write(string msg)
+{
+    Serial::write(vector<uint8_t>(msg.cbegin(), msg.cend()));
+}
+
 size_t Serial::read(vector<uint8_t> &buffer, size_t nBytesToRead, nanoseconds timeout)
 {
     return read(buffer, nBytesToRead, timeout, FlushInputBuffer::Disable);

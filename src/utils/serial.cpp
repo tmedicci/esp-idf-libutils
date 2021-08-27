@@ -140,7 +140,7 @@ size_t Serial::read(vector<uint8_t> &buffer, vector<uint8_t> &pattern, size_t nB
 
         int counter = 0;
 
-        counter = uart_read_bytes(uart_num, &ptr[totalRead], nBytesToRead - totalRead, 100 / portTICK_RATE_MS);
+        counter = uart_read_bytes(uart_num, &ptr[totalRead], 1, 100 / portTICK_RATE_MS);
 
         if (counter < 0) {
             throw SerialException("Failed to read from uart: ", esp_err_to_name(counter));
